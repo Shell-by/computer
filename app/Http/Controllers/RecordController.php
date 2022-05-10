@@ -6,6 +6,31 @@ use Illuminate\Http\Request;
 use App\Models\Record;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Calculates score and count
+ * @param Request $request
+ * @return int[][] score count
+ */
+function calculateScore(Request $request){
+    $count = [0, 0, 0];
+    $score = [0, 0, 0];
+    $selector = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+    for ($i = 0; $i < 8; $i++) {
+        for ($ii = 0; $ii < 3; $ii++){
+            $val = $request->{$selector[$i] . $ii+1};
+            if ($val != 0) {
+                $count[$ii]++;
+                $score[$ii] += $val;
+            }
+        }
+    }
+    return array($score, $count);
+}
+
+function calculate($score, $count){
+    if ($count == 0) return 0;
+    return $score/$count;
+}
 class RecordController extends Controller
 {
     /**
@@ -38,17 +63,14 @@ class RecordController extends Controller
     {
         $record = new Record();
 
-        $semester1 = ($request->a1 + $request->b1 + $request->c1 + $request->d1 + $request->e1 + $request->f1 + $request->g1 + $request->h1)/8;
-        $semester2 = ($request->a2 + $request->b2 + $request->c2 + $request->d2 + $request->e2 + $request->f2 + $request->g2 + $request->h2)/8;
-        $semester3 = ($request->a3 + $request->b3 + $request->c3 + $request->d3 + $request->e3 + $request->f3 + $request->g3 + $request->h3)/8;
+        list($score, $count) = calculateScore($request);
 
         if ($record->form_way == "일반전형") {
-            $result = number_format((150 * (1/5) * (1/3) * ($semester1 + $semester2 + $semester3)), 2);
+            //check the $count[?] is 0 -> no calculation
+            $result = number_format(10 * (calculate($score[0],$count[0]) + calculate($score[1],$count[1]) + calculate($score[2],$count[2])), 2);
         } else {
-            $result = number_format((220 * (1/5) * (1/3) * ($semester1 + $semester2 + $semester3)), 2);
+            $result = number_format((44 * (1/3) * (calculate($score[0],$count[0]) + calculate($score[1],$count[1]) + calculate($score[2],$count[2]))), 2);
         }
-
-
 
         $record->form_id = $request->form_id;
         $record->user_session = $request->user_session;
@@ -59,12 +81,13 @@ class RecordController extends Controller
         $record->save();
 
         return view('result')->with('result', $result);
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -75,7 +98,7 @@ class RecordController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -87,7 +110,7 @@ class RecordController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -98,7 +121,7 @@ class RecordController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

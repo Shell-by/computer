@@ -43,9 +43,10 @@ class FormController extends Controller
                 ->where('ph_num', $request->ph_num)
                 ->where('stu_name', $request->stu_name)
                 ->where('gender', $request->gender)
+                ->where('city', $request->city)
                 ->count();
 
-            if ($cnt > 0) {
+            if ($cnt == 0) {
                 $form = new Form();
                 $form->user_session = $request->user_session;
                 $form->city = $request->city;
