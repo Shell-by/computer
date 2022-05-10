@@ -14,7 +14,8 @@
     </div>
 
     <section class="loginform">
-        <form method="post" action="../php/login_action.php">
+        <form method="post" action="/loginController">
+            @method('post')
 
             <br />
         <br />

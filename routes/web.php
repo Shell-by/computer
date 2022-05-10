@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\RecordController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
+Route::post('/loginController', [\App\Models\User::class, 'store']);
 
 Route::get('/form', [FormController::class, 'index']);
 

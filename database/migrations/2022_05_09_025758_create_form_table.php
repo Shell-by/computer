@@ -68,68 +68,76 @@ return new class extends Migration
             $table->foreign('class')->references('t_class')->on('class');
         });
 
-        DB::table('class')->insert(
-            array(
-                'id' => NULL,
-                't_class' => '소프트웨어개발과'
-            )
-        );
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('password');
+        });
 
-        DB::table('class')->insert(
-            array(
-                'id' => NULL,
-                't_class' => '인공지능소프트웨어과'
-            )
-        );
+        if(DB::table('class')->count() == 0) {
+            DB::table('class')->insert(
+                array(
+                    'id' => NULL,
+                    't_class' => '소프트웨어개발과'
+                )
+            );
 
-        DB::table('class')->insert(
-            array(
-                'id' => NULL,
-                't_class' => '게임개발과'
-            )
-        );
+            DB::table('class')->insert(
+                array(
+                    'id' => NULL,
+                    't_class' => '인공지능소프트웨어과'
+                )
+            );
 
-        DB::table('class')->insert(
-            array(
-                'id' => NULL,
-                't_class' => '미정'
-            )
-        );
+            DB::table('class')->insert(
+                array(
+                    'id' => NULL,
+                    't_class' => '게임개발과'
+                )
+            );
 
-        DB::table('session')->insert(
-            array(
-                'id' => NULL,
-                't_session' => '검정고시'
-            )
-        );
+            DB::table('class')->insert(
+                array(
+                    'id' => NULL,
+                    't_class' => '미정'
+                )
+            );
 
-        DB::table('session')->insert(
-            array(
-                'id' => NULL,
-                't_session' => '졸업'
-            )
-        );
+            DB::table('session')->insert(
+                array(
+                    'id' => NULL,
+                    't_session' => '검정고시'
+                )
+            );
 
-        DB::table('session')->insert(
-            array(
-                'id' => NULL,
-                't_session' => '졸업예정'
-            )
-        );
+            DB::table('session')->insert(
+                array(
+                    'id' => NULL,
+                    't_session' => '졸업'
+                )
+            );
 
-        DB::table('way')->insert(
-            array(
-                'id' => NULL,
-                't_way' => '일반전형'
-            )
-        );
+            DB::table('session')->insert(
+                array(
+                    'id' => NULL,
+                    't_session' => '졸업예정'
+                )
+            );
 
-        DB::table('way')->insert(
-            array(
-                'id' => NULL,
-                't_way' => '특별전형'
-            )
-        );
+            DB::table('way')->insert(
+                array(
+                    'id' => NULL,
+                    't_way' => '일반전형'
+                )
+            );
+
+            DB::table('way')->insert(
+                array(
+                    'id' => NULL,
+                    't_way' => '특별전형'
+                )
+            );
+        }
     }
 
     /**

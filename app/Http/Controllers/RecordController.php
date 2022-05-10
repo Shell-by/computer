@@ -31,6 +31,13 @@ function calculate($score, $count){
     if ($count == 0) return 0;
     return $score/$count;
 }
+
+function calculateAverageScore($way, $score, $count) {
+    if ($way == "일반전형") {
+        return number_format((44 * (1/3) * (calculate($score[0],$count[0]) + calculate($score[1],$count[1]) + calculate($score[2],$count[2]))), 2);
+    }
+    return number_format((10 * (calculate($score[0],$count[0]) + calculate($score[1],$count[1]) + calculate($score[2],$count[2]))), 2);
+}
 class RecordController extends Controller
 {
     /**
@@ -67,9 +74,9 @@ class RecordController extends Controller
 
         if ($record->form_way == "일반전형") {
             //check the $count[?] is 0 -> no calculation
-            $result = number_format(10 * (calculate($score[0],$count[0]) + calculate($score[1],$count[1]) + calculate($score[2],$count[2])), 2);
+            $result = calculateAverageScore("일반전형", $score, $count);
         } else {
-            $result = number_format((44 * (1/3) * (calculate($score[0],$count[0]) + calculate($score[1],$count[1]) + calculate($score[2],$count[2]))), 2);
+            $result = calculateAverageScore("특별전형", $score, $count);
         }
 
         $record->form_id = $request->form_id;
@@ -80,7 +87,7 @@ class RecordController extends Controller
 
         $record->save();
 
-        return view('result')->with('result', $result);
+        return view('result')->with('result', $result)->with('form_id', DB::table('forms')->where('ph_num', $request->ph_num)->where('stu_name', $request->stu_name)->value('id'));
 
     }
 

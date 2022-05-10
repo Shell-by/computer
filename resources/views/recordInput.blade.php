@@ -34,7 +34,7 @@
             @csrf
             @method('put')
 
-            <input type="hidden" name="form_id" value="{{DB::table('forms')->where('ph_num', $request->ph_num)->where('stu_name', $request->stu_name)->value('id')}}">
+            <input type="hidden" name="form_id" value="{{$form_id}}">
             <input type="hidden" name="user_session" value="{{$request->user_session}}">
             <input type="hidden" name="way" value="{{$request->way}}" />
             <input type="hidden" name="class" value="{{$request->class}}" />
