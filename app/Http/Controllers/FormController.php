@@ -37,7 +37,11 @@ class FormController extends Controller
     public function store(Request $request)
     {
 
-        if ($request->accept) {
+    $form_id = 0;
+    $cnt = 0;
+
+    if ($request->accept == 0) {
+
 
             $cnt = DB::table('forms')
                 ->where('ph_num', $request->ph_num)
@@ -61,9 +65,19 @@ class FormController extends Controller
                 $form->accept = true;
                 $form->save();
             }
+
+            $form = DB::table('forms')
+                ->where('ph_num', $request->ph_num)
+                ->where('stu_name', $request->stu_name)
+                ->where('gender', $request->gender)
+                ->where('city', $request->city)
+                ->value('id');
+
+            $form_id = $form;
+
         }
 
-        return view('recordInput')->with('request', $request);
+        return view('recordInput')->with('request', $request)->with('form_id', $form_id);
     }
 
     /**

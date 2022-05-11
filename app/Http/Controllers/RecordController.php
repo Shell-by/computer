@@ -79,6 +79,7 @@ class RecordController extends Controller
             $result = calculateAverageScore("특별전형", $score, $count);
         }
 
+        if ($request->form_id != 0 ) {
         $record->form_id = $request->form_id;
         $record->user_session = $request->user_session;
         $record->way = $request->way;
@@ -86,9 +87,11 @@ class RecordController extends Controller
         $record->record = $result;
 
         $record->save();
+        }
 
-        return view('result')->with('result', $result)->with('form_id', DB::table('forms')->where('ph_num', $request->ph_num)->where('stu_name', $request->stu_name)->value('id'));
 
+        return view('result')->with('result', $result);
+        
     }
 
     /**

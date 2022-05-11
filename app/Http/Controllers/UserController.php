@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -35,9 +36,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $table = new User();
-        $table->name = $request->id;
-        $table->password = base64_encode(hash('sha256', $request->pw, 'true'));
+        $count = DB::table('users')
+            ->where('name', $request->id)
+            ->where('password', base64_encode(hash('sha256', $request->pw, 'true')))
+            ->count();
+
+        if ($count != 0) {
+            session()->put('user','admin');
+            return redirect('output/0');
+        }
+
+        return redirect('login');
+
     }
 
     /**
@@ -48,7 +58,23 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+
+        if (session('user') != 'admin') {
+            return redirect('login');
+        }
+
+        $data = DB::table('forms')
+            ->join('records', 'forms.id', '=', 'records.form_id')
+            ->select('forms.stu_name', 'records.way', 'records.class', 'records.record', 'forms.sch_name', 'records.created_at')
+            ->orderBy('records.created_at', 'desc')
+//            ->offset($id * 15)
+//            ->limit(15)
+            ->get();
+
+        return view('output')->with('data', $data);
+
+        echo $count;
+
     }
 
     /**
