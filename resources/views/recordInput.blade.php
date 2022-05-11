@@ -22,7 +22,7 @@
 <body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
     <div class="header">
         <h2 class="name_tag">입시용 교과성적 산출</h2>
-        <h3 class="title">교과성적 입력</h3>
+        <h3 class="title">■ 교과성적 입력</h3>
 
         <hr />
     </div>
