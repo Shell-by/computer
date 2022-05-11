@@ -17,7 +17,7 @@
     <div class="formbox">
         <div class="header">
             <h2 class="name_tag">입시용 교과성적 산출</h2>
-            <h3 class="title">지원자 정보 입력</h3>
+            <h3 class="title">■ 지원자 정보 입력</h3>
 
 
             <hr />
@@ -25,6 +25,16 @@
         <div class = "container">
             <form onsubmit="return checkForm();" action="{{url('/')}}/record" method="post">
                 @csrf
+
+                
+                <label for="accept">개인정보 수집/활용 동의서</label>
+                <p>■ 개인정보 수집·이용 동의서(선택) </p>
+                <p>  ▪수집·이용목적: 입학 안내 홍보, 안내 문자 발송 및 학교 정보 제공</p>
+                <p>  ▪수집 항목: 학생성명(국문), 학생 또는 학부모 연락처</p>
+                <p>▪보유기간: 당 해 입시 전형(특별, 일반) 종료일(11월)까지</p>
+                <p>▪개인정보 수집을 거부할 수 있으며, 미동의 시 학교 안내 정보고 제공되지 않습니다.</p>
+                <input type="radio" name="accept" id="accept" value="0" class="accept">동의
+                <input type="radio" name="accept" id="accept" value="1" class="accept">동의하지않음
 
                 <table style="border-collapse: collapse;">
                     <tr>
@@ -80,10 +90,10 @@
                         <td style="background-color:#bbb">관심전형</td>
                         <td>
                             <input type="radio" name="way" value="0" id="hidden" class="way" checked>
-                            <input type="radio" name="way" value="일반전형" class="way" id="way1">
-                            <label for="way1">일반전형</label>
                             <input type="radio" name="way" value="특별전형" class="way" id="way2">
                             <label for="way2">특별전형</label>
+                            <input type="radio" name="way" value="일반전형" class="way" id="way1">
+                            <label for="way1">일반전형</label>
                         </td>
                     </tr>
 
@@ -105,25 +115,22 @@
                         <td style="background-color:#bbb">학생성명</td>
                         <td><input type="text" name="stu_name" autocomplete="off" placeholder="이름을 입력하세요." class="name"style="width: 200px"></td>
                         <td style="background-color:#bbb">전화번호</td>
-                        <td> <input type="int" maxlength="11" name = "ph_num" autocomplete="off" placeholder="숫자만 입력하세요." class="num" style="width: 200px"></td>
+                        <td> <input type="text" maxlength="11" name = "ph_num" autocomplete="off" placeholder="숫자만 입력하세요." class="num" style="width: 200px" pattern="[0-9]+"></td>
                     </tr>
                     <tr>
-                        <td colspan="4" style="background-color:#bbb">    <input type="radio" name="onner" value="0" id="hidden" checked>
-                            <input type="radio" name="onner" value="학생" class="onner">학생
-                            <input type="radio" name="onner" value="보호자" class="onner">보호자    </td>
+                        <td colspan="4" style="background-color:#bbb"> 
+                        <input type="radio" name="onner" value="학생" class="onner">학생 연락처
+                        <input type="radio" name="onner" value="보호자" class="onner">보호자 연락처
+                        <input type="radio" name="onner" value="0" id="hidden" checked>
+                                </td>
                     </tr>
                 </table>
                 <br />
 
-                <input type="checkbox" name="accept" id="accept" value="1" class="accept">
-                <label for="accept">개인정보 수집/활용에 동의합니다.</label>
-                <p onclick="
-               var link = 'https://url.kr/7npblv';
-               window.open(link);
-               ">자세히보기(클릭)</p>
+                
                 <br />
                 <br />
-                <input type="submit" name="submit" value="학생정보 등록" class="submit_btn">
+                <input type="submit" name="submit" value="성적 입력" class="submit_btn">
 
             </form>
 
@@ -133,7 +140,6 @@
 </body>
 
 <script language='javascript'>
-
      function checkForm(){
          var session = document.querySelector("input[name = 'user_session']:checked");
          var city = document.querySelector("select[name = 'city']");
@@ -146,7 +152,6 @@
          var phone_num = document.querySelector("input[name = 'ph_num']");
          var onner = document.querySelector("input[name='onner']:checked");
          var accept = document.querySelector("input[name = 'accept']");
-
          if(session.value == "0"){
              alert("졸업여부를 선택해주세요.");
              return false;
@@ -162,24 +167,19 @@
          if(school_name.value.trim() == ""){
              alert("학교 이름을 입력해주세요.");
              return false;
-
          }
          if(gender_radio.value == "0"){
              alert("성별을 선택해주세요.");
              return false;
-
          }
-
          if(way.value == "0"){
              alert("관심 전형을 선택해주세요.");
              return false;
-
          }
          if(cls.value == "0"){
              alert("희망 학과를 선택해주세요.");
              return false;
          }
-
          if(name.value.trim() == ""){
              alert("성명을 입력해주세요.");
              return false;
@@ -196,8 +196,8 @@
              alert("개인정보 활용에 동의해주세요.");
              return false;
          }
-
      }
+
 
 </script>
 
