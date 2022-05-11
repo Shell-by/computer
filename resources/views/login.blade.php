@@ -9,7 +9,7 @@
 </head>
 <body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
     <div class="header">
-        <h2 class="name_tag">관리자 로그인하기</h2>
+        <h2 class="name_tag">■관리자 로그인하기</h2>
         <hr />
     </div>
 
