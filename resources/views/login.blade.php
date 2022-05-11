@@ -16,6 +16,7 @@
     <section class="loginform">
         <form method="post" action="/loginController">
             @method('post')
+            @csrf
 
             <br />
         <br />
