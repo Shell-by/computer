@@ -23,6 +23,9 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
+
+Route::get('/output/{id}', [UserController::class, 'show']);
+
 Route::post('/loginController', [UserController::class, 'store']);
 
 Route::get('/form', [FormController::class, 'index']);
