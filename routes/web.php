@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
-Route::post('/loginController', [\App\Models\User::class, 'store']);
+Route::post('/loginController', [UserController::class, 'store']);
 
 Route::get('/form', [FormController::class, 'index']);
 
