@@ -37,7 +37,7 @@ class FormController extends Controller
     public function store(Request $request)
     {
 
-    $form_id = 0;
+    $form_id = 9999999;
     $cnt = 0;
 
     if ($request->accept == 0) {
