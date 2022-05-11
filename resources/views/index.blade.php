@@ -10,7 +10,7 @@
 <body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
     <div class="header">
         <h2 class="name_tag">입시용 교과성적 계산기</h2>
-        <a href="{{url('/')}}/login"><p class="gobutton1">관리자 로그인</p></a>
+        <a href="{{url('/')}}/login"><p class="gobutton1">■관리자 로그인</p></a>
         <hr />
     </div>
 
