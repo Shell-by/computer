@@ -206,11 +206,12 @@ class UserController extends Controller
                 fwrite($file, filterData($da->created_at . ", "));
             }
             fclose($file);
+            echo $file;
         };
 
         response()->stream($callback, 200, $header);
 
-        echo $file;
+        
 //         return redirect('/dataBase.csv');
     }
 }
