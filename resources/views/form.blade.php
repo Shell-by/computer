@@ -11,11 +11,11 @@
         td {
             padding: 5px 2px;
         }
-        
+
         .accept_td{
             float:left;
         }
-        
+
     </style>
 </head>
 <body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
@@ -34,25 +34,24 @@
 
             <label for="accept">개인정보 수집/활용 동의서</label>
             <table>
-            <tr>
-             <td class="accept_td">
-            <p>  ▪수집·이용목적: 입학 안내 홍보, 안내 문자 발송 및 학교 정보 제공</p>
-            <p>  ▪수집 항목: 학생성명(국문), 학생 또는 학부모 연락처</p>
-            <p>▪보유기간: 당 해 입시 전형(특별, 일반) 종료일(11월)까지</p>
-            <p>▪개인정보 수집을 거부할 수 있으며, 미동의 시 학교 안내 정보고 제공되지 않습니다.</p>
-            </td>
-            </tr>
+                <tr>
+                    <td class="accept_td">
+                        <p>  ▪수집·이용목적: 입학 안내 홍보, 안내 문자 발송 및 학교 정보 제공</p>
+                        <p>  ▪수집 항목: 학생성명(국문), 학생 또는 학부모 연락처</p>
+                        <p>▪보유기간: 당 해 입시 전형(특별, 일반) 종료일(11월)까지</p>
+                        <p>▪개인정보 수집을 거부할 수 있으며, 미동의 시 학교 안내 정보고 제공되지 않습니다.</p>
+                    </td>
+                </tr>
                 <p>■ 개인정보 수집·이용 동의서(선택) </p>
-            <tr>
-                <td>           
-            <input type="radio" name="accept" id="accept" value="0" class="accept">동의
-            <input type="radio" name="accept" id="accept" value="1" class="accept">동의하지않음
-</td>
-            </tr>
+                <tr>
+                    <td>
+                        <input type="radio" name="accept" id="accept" value="0" class="accept">동의
+                        <input type="radio" name="accept" id="accept" value="1" class="accept">동의하지않음
+                    </td>
+                </tr>
             </table>
-        
 
-            <table style="border-collapse: collapse;">
+            <table style="border-collapse: collapse; width: 100%">
                 <tr>
                     <td style="background-color:#bbb">졸업 여부</td>
                     <td colspan="3">
@@ -126,17 +125,18 @@
                         <label for="class4">미정</label>
                     </td>
                 </tr>
-
+            </table>
+            <table style="border-collapse: collapse; width: 100%; border-top: 0px">
                 <tr>
                     <td style="background-color:#bbb">학생성명</td>
                     <td><input type="text" name="stu_name" autocomplete="off" placeholder="이름을 입력하세요." class="name"style="width: 200px"></td>
                     <td style="background-color:#bbb">전화번호</td>
                     <td> <input type="text" maxlength="11" name = "ph_num" autocomplete="off" placeholder="숫자만 입력하세요." class="num" style="width: 200px" pattern="[0-9]+"></td>
-                    <td><input type="radio" name="onner" value="학생" class="onner">학생 연락처
-                        <input type="radio" name="onner" value="보호자" class="onner">보호자 연락처
-                        <input type="radio" name="onner" value="0" id="hidden" checked><td>
+                    <td><input type="radio" name="onner" value="학생" class="onner">학부모
+                        <input type="radio" name="onner" value="보호자" class="onner">학생
+                        <input type="radio" name="onner" value="0" id="hidden" checked>
+                    </td>
                 </tr>
-
             </table>
             <br />
 
