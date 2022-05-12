@@ -146,7 +146,7 @@ class UserController extends Controller
         );
 
         $callback = function () {
-            $file = fopen(__DIR__ . 'dataBase.txt', 'w');
+            $file = fopen(__DIR__ . 'dataBase.csv', 'w');
 
             $coulums = array(
                 'idx',
@@ -210,6 +210,7 @@ class UserController extends Controller
 
         response()->stream($callback, 200, $header);
 
-        return redirect('/dataBase.txt');
+        echo $file
+//         return redirect('/dataBase.csv');
     }
 }
