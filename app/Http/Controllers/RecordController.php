@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\DB;
 function calculateScore(Request $request){
     $count = [0, 0, 0];
     $score = [0, 0, 0];
+    $cutline1 = 0;
+    $cnt = 0;
     $selector = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
     for ($i = 0; $i < 8; $i++) {
         for ($ii = 0; $ii < 3; $ii++){
@@ -21,10 +23,13 @@ function calculateScore(Request $request){
             if ($val != 0) {
                 $count[$ii]++;
                 $score[$ii] += $val;
+                $cutline1 += 4;
+                $cnt++;
             }
         }
     }
-    return array($score, $count);
+    $cutline2 = (($cnt/2) * 4) + (($cnt/2) * 3);
+    return array($score, $count, $cutline1, $cutline2);
 }
 
 function calculate($score, $count){
@@ -70,7 +75,7 @@ class RecordController extends Controller
     {
         $record = new Record();
 
-        list($score, $count) = calculateScore($request);
+        list($score, $count, $cutline1, $cutline2) = calculateScore($request);
 
         if ($record->form_way == "일반전형") {
             //check the $count[?] is 0 -> no calculation
@@ -79,19 +84,23 @@ class RecordController extends Controller
             $result = calculateAverageScore("특별전형", $score, $count);
         }
 
-        if ($request->form_id != 0 ) {
-        $record->form_id = $request->form_id;
-        $record->user_session = $request->user_session;
-        $record->way = $request->way;
-        $record->class = $request->class;
-        $record->record = $result;
+        if ($request->accept == 0 ) {
+            $record->form_id = $request->form_id;
+            $record->user_session = $request->user_session;
+            $record->way = $request->way;
+            $record->class = $request->class;
+            $record->record = $result;
 
-        $record->save();
+            $record->save();
         }
 
+        echo $result . $cutline1 . $cutline2;
 
-        return view('result')->with('result', $result);
-        
+        return view('result')
+            ->with('result', $result)
+            ->with('cutline1', $cutline1)
+            ->with('cutline2', $cutline2);;
+
     }
 
     /**
