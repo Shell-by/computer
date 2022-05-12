@@ -146,7 +146,8 @@ class UserController extends Controller
         );
 
         $callback = function () {
-            $file = fopen(__DIR__ . 'dataBase.csv', 'w');
+            $file = fopen('dataBase.csv', 'w');
+            echo $file . "<br />";
 
             $coulums = array(
                 'idx',
