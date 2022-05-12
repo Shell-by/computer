@@ -146,7 +146,7 @@ class UserController extends Controller
         );
 
         $callback = function () {
-            $file = fopen( 'dataBase.txt', 'w');
+            $file = fopen(__DIR__ . 'dataBase.txt', 'w');
 
             $coulums = array(
                 'idx',
@@ -165,7 +165,7 @@ class UserController extends Controller
             );
 
             foreach ($coulums as $colum) {
-                fwrite(__DIR__ . $file, filterData($colum . ", "));
+                fwrite($file, filterData($colum . ", "));
             }
 
             $count = 0;
