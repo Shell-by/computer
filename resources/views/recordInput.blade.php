@@ -35,6 +35,7 @@
             @method('put')
 
             <input type="hidden" name="form_id" value="{{$form_id}}">
+            <input type="hidden" name="accept" value="{{$request->accept}}">
             <input type="hidden" name="user_session" value="{{$request->user_session}}">
             <input type="hidden" name="way" value="{{$request->way}}" />
             <input type="hidden" name="class" value="{{$request->class}}" />
