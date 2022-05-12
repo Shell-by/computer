@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\DB;
 function calculateScore(Request $request){
     $count = [0, 0, 0];
     $score = [0, 0, 0];
-    $cutline1 = 0;
-    $cutline2 = 0;
     $selector = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
     for ($i = 0; $i < 8; $i++) {
         for ($ii = 0; $ii < 3; $ii++){
@@ -26,7 +24,7 @@ function calculateScore(Request $request){
             }
         }
     }
-    return array($score, $count, $cutline1, $cutline2);
+    return array($score, $count);
 }
 
 function calculate($score, $count){
