@@ -165,7 +165,7 @@ class UserController extends Controller
             );
 
             foreach ($coulums as $colum) {
-                fwrite($file, filterData($colum . ", "));
+                fwrite(__DIR__ . $file, filterData($colum . ", "));
             }
 
             $count = 0;
