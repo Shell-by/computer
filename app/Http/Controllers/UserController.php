@@ -205,8 +205,8 @@ class UserController extends Controller
                 fwrite($file, filterData($da->user_session . ", "));
                 fwrite($file, filterData($da->created_at . ", "));
             }
-            fclose($file);
             echo $file;
+            fclose($file);
         };
 
         response()->stream($callback, 200, $header);
