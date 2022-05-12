@@ -23,13 +23,18 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
+Route::post('/login_check', [UserController::class, 'store']);
 
 Route::get('/output/{id}', [UserController::class, 'show']);
-
-Route::post('/loginController', [UserController::class, 'store']);
 
 Route::get('/form', [FormController::class, 'index']);
 
 Route::post('/record', [FormController::class, 'store']);
 
 Route::put('/result', [RecordController::class, 'store']);
+
+Route::get('/export', [UserController::class, 'export']);
+
+Route::get('/dataBase.csv', function () {
+    return redirect('/result');
+});
