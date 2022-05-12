@@ -38,7 +38,7 @@ function calculate($score, $count){
 }
 
 function calculateAverageScore($way, $score, $count) {
-    if (strcmp($way, "일반전형") == 0) {
+    if ($way === "일반전형") {
         return number_format((44 * (1/3) * (calculate($score[0],$count[0]) + calculate($score[1],$count[1]) + calculate($score[2],$count[2]))), 2);
     }
     return number_format((10 * (calculate($score[0],$count[0]) + calculate($score[1],$count[1]) + calculate($score[2],$count[2]))), 2);
@@ -52,7 +52,7 @@ function CutLineCalculate($k, $count) {
 }
 
 function calculateAverageCutLine($way, $count) {
-    if (strcmp($way, "일반전형") == 0) {
+    if ($way === "일반전형") {
         return CutLineCalculate(44, $count);
     }
     return CutLineCalculate(30, $count);
@@ -92,7 +92,7 @@ class RecordController extends Controller
 
         list($score, $count, $cutLineScore) = calculateScore($request);
 
-        if (strcmp($request->way, "일반전형") == 0) {
+        if ($request->way === "일반전형") {
             //check the $count[?] is 0 -> no calculation
             $result = calculateAverageScore("일반전형", $score, $count);
             $cutLine = calculateAverageScore("일반전형", $cutLineScore, $count);
@@ -100,7 +100,7 @@ class RecordController extends Controller
         } else {
             $result = calculateAverageScore("특별전형", $score, $count);
             $cutLine = calculateAverageScore("특별전형", $cutLineScore, $count);
-            $cutLine2 = calculateAverageCutLine("일반전형", $count);
+            $cutLine2 = calculateAverageCutLine("특별전형", $count);
         }
 
         if ($request->accept == 0 ) {
