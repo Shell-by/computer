@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Record;
 use Illuminate\Support\Facades\DB;
+use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 
 /**
  * Calculates score and count
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\DB;
 function calculateScore(Request $request){
     $count = [0, 0, 0];
     $score = [0, 0, 0];
+    $cutLineScore = [0, 0, 0];
+
     $selector = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
     for ($i = 0; $i < 8; $i++) {
         for ($ii = 0; $ii < 3; $ii++){
@@ -21,10 +24,12 @@ function calculateScore(Request $request){
             if ($val != 0) {
                 $count[$ii]++;
                 $score[$ii] += $val;
+                $cutLineScore[$ii] += 4;
             }
         }
     }
-    return array($score, $count);
+
+    return array($score, $count, $cutLineScore);
 }
 
 function calculate($score, $count){
@@ -33,11 +38,26 @@ function calculate($score, $count){
 }
 
 function calculateAverageScore($way, $score, $count) {
-    if ($way == "일반전형") {
+    if (strcmp($way, "일반전형") == 0) {
         return number_format((44 * (1/3) * (calculate($score[0],$count[0]) + calculate($score[1],$count[1]) + calculate($score[2],$count[2]))), 2);
     }
     return number_format((10 * (calculate($score[0],$count[0]) + calculate($score[1],$count[1]) + calculate($score[2],$count[2]))), 2);
 }
+
+function CutLineCalculate($k, $count) {
+    return number_format(($k * (1/3)
+        * (calculate((($count[0]/2) * 3) + (($count[0]/2) * 4), $count[0])
+            + calculate((($count[1]/2) * 3) + (($count[1]/2) * 4), $count[1])
+            + calculate((($count[2]/2) * 3) + (($count[2]/2) * 4), $count[2]))), 2);
+}
+
+function calculateAverageCutLine($way, $count) {
+    if (strcmp($way, "일반전형") == 0) {
+        return CutLineCalculate(44, $count);
+    }
+    return CutLineCalculate(30, $count);
+}
+
 class RecordController extends Controller
 {
     /**
@@ -70,13 +90,17 @@ class RecordController extends Controller
     {
         $record = new Record();
 
-        list($score, $count) = calculateScore($request);
+        list($score, $count, $cutLineScore) = calculateScore($request);
 
-        if ($record->form_way == "일반전형") {
+        if (strcmp($request->way, "일반전형") == 0) {
             //check the $count[?] is 0 -> no calculation
             $result = calculateAverageScore("일반전형", $score, $count);
+            $cutLine = calculateAverageScore("일반전형", $cutLineScore, $count);
+            $cutLine2 = calculateAverageCutLine("일반전형", $count);
         } else {
             $result = calculateAverageScore("특별전형", $score, $count);
+            $cutLine = calculateAverageScore("특별전형", $cutLineScore, $count);
+            $cutLine2 = calculateAverageCutLine("일반전형", $count);
         }
 
         if ($request->accept == 0 ) {
@@ -89,8 +113,7 @@ class RecordController extends Controller
             $record->save();
         }
 
-
-        return view('result')->with('result', $result);
+        return view('result')->with('result', $result)->with('cutLine', $cutLine)->with('cutLine2', $cutLine2);
 
     }
 
