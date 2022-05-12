@@ -210,7 +210,7 @@ class UserController extends Controller
 
         response()->stream($callback, 200, $header);
 
-        echo $file
+        echo $file;
 //         return redirect('/dataBase.csv');
     }
 }
