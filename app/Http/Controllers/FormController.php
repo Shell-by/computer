@@ -42,7 +42,6 @@ class FormController extends Controller
 
     if ($request->accept == 0) {
 
-
             $cnt = DB::table('forms')
                 ->where('ph_num', $request->ph_num)
                 ->where('stu_name', $request->stu_name)
