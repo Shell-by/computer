@@ -147,7 +147,6 @@ class UserController extends Controller
 
         $callback = function () {
             $file = fopen('dataBase.csv', 'w');
-            echo $file . "<br />";
 
             $coulums = array(
                 'idx',
@@ -206,13 +205,12 @@ class UserController extends Controller
                 fwrite($file, filterData($da->user_session . ", "));
                 fwrite($file, filterData($da->created_at . ", "));
             }
-            echo $file;
             fclose($file);
         };
 
         response()->stream($callback, 200, $header);
 
         
-//         return redirect('/dataBase.csv');
+        return redirect('/dataBase.csv');
     }
 }
