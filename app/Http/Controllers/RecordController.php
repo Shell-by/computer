@@ -15,7 +15,7 @@ use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 function calculateScore(Request $request){
     $count = [0, 0, 0];
     $score = [0, 0, 0];
-    $cutLineScore = [0, 0, 0];
+    /*$cutLineScore = [0, 0, 0];*/
 
     $selector = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
     for ($i = 0; $i < 8; $i++) {
@@ -24,12 +24,12 @@ function calculateScore(Request $request){
             if ($val != 0) {
                 $count[$ii]++;
                 $score[$ii] += $val;
-                $cutLineScore[$ii] += 4;
+                /*$cutLineScore[$ii] += 4;*/
             }
         }
     }
 
-    return array($score, $count, $cutLineScore);
+    return array($score, $count, /*$cutLineScore*/);
 }
 
 function calculate($score, $count){
@@ -90,17 +90,17 @@ class RecordController extends Controller
     {
         $record = new Record();
 
-        list($score, $count, $cutLineScore) = calculateScore($request);
+        list($score, $count, /*$cutLineScore*/) = calculateScore($request);
 
         if ($request->way === "일반전형") {
             //check the $count[?] is 0 -> no calculation
             $result = calculateAverageScore("일반전형", $score, $count);
-            $cutLine = calculateAverageScore("일반전형", $cutLineScore, $count);
-            $cutLine2 = calculateAverageCutLine("일반전형", $count);
+//            $cutLine = calculateAverageScore("일반전형", $cutLineScore, $count);
+//            $cutLine2 = calculateAverageCutLine("일반전형", $count);
         } else {
             $result = calculateAverageScore("특별전형", $score, $count);
-            $cutLine = calculateAverageScore("특별전형", $cutLineScore, $count);
-            $cutLine2 = calculateAverageCutLine("특별전형", $count);
+//            $cutLine = calculateAverageScore("특별전형", $cutLineScore, $count);
+//            $cutLine2 = calculateAverageCutLine("특별전형", $count);
         }
 
         if ($request->accept == 0 ) {
@@ -113,7 +113,7 @@ class RecordController extends Controller
             $record->save();
         }
 
-        return view('result')->with('result', $result)/*->with('cutLine', $cutLine)->with('cutLine2', $cutLine2)*/;
+        return view('result')->with('result', $result)->with('way', $request->way);
 
     }
 
