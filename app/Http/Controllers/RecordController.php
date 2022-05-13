@@ -113,7 +113,7 @@ class RecordController extends Controller
             $record->save();
         }
 
-        return view('result')->with('result', $result)->with('cutLine', $cutLine)->with('cutLine2', $cutLine2);
+        return view('result')->with('result', $result)/*->with('cutLine', $cutLine)->with('cutLine2', $cutLine2)*/;
 
     }
 
