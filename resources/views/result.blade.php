@@ -18,9 +18,8 @@
     <section class="section">
 
 
-       <p class="result">교과성적산출결과 : {{$result}}</p>
-       <p>{{$cutLine}} 이상이면 안정권입니다.</p>
-       <p>{{$cutLine2}} 이상이면 지원가능합니다. 학업계획서와 자기소개서 준비에 열중해주세요.</p>
+       <p class="result">{{$way}} 교과성적: 점수 : {{$result}}</p>
+        <p>입학성적에 대한 자세한 안내는 학교로 연락주세요(054-832-2903)</p>
 
     </section>
 </body>
