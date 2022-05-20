@@ -38,13 +38,14 @@
                     <td class="accept_td">
                         <p>  ▪수집·이용목적: 입학 안내 홍보, 안내 문자 발송 및 학교 정보 제공</p>
                         <p>  ▪수집 항목: 학생성명(국문), 학생 또는 학부모 연락처</p>
-                        <p>▪보유기간: 당 해 입시 전형(특별, 일반) 종료일(11월)까지</p>
+                        <p>▪보유기간: 당 해 입시 전형(특별, 일a반) 종료일(11월)까지</p>
                         <p>▪개인정보 수집을 거부할 수 있으며, 미동의 시 학교 안내 정보고 제공되지 않습니다.</p>
                     </td>
                 </tr>
                 <p>■ 개인정보 수집·이용 동의서(선택) </p>
                 <tr>
                     <td>
+                        <input type="radio" name="accept" value="아님" class="accept" id="hidden" checked>
                         <input type="radio" name="accept" id="accept" value="0" class="accept">동의
                         <input type="radio" name="accept" id="accept" value="1" class="accept">동의하지않음
                     </td>
@@ -164,7 +165,25 @@
         var name = document.querySelector("input[name = 'stu_name']");
         var phone_num = document.querySelector("input[name = 'ph_num']");
         var onner = document.querySelector("input[name='onner']:checked");
-        var accept = document.querySelector("input[name = 'accept']");
+        var accept = document.querySelector("input[name = 'accept']:checked");
+
+        if(accept.value == "아님") {
+            alert("개인정보 수집·이용 동의서를 선택해주세요.");
+            return false;
+        }
+
+        if(accept.value == 1) {
+            if(session.value == "0"){
+                alert("졸업여부를 선택해주세요.");
+                return false;
+            }
+            if(way.value == "0"){
+                alert("관심 전형을 선택해주세요.");
+                return false;
+            }
+            return true;
+        }
+
         if(session.value == "0"){
             alert("졸업여부를 선택해주세요.");
             return false;
