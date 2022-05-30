@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
-Route::post('/loginController', [UserController::class, 'store']);
+Route::post('/login_check', [UserController::class, 'store']);
 
 Route::get('/output/{id}', [UserController::class, 'show']);
 
