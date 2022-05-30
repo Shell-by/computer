@@ -1,119 +1,176 @@
 @import './reset.css';
 
 #hidden {
-    display: none;
+  display: none;
+}
+
+.header {
+  background: #000;
 }
 
 .container {
-    width: 750px;
-    background: #fff;
-    border-radius: 5px;
-    padding: 20px 40px;
+  width: 750px;
+  height: 780px;
+  background: #fff;
+  border-radius: 5px;
+  padding: 30px 40px;
 }
 
-.container .title {
-    color: #0684c4;
-    font-size: 1.25rem;
-    font-weight: 600;
+.content .title {
+  color: #0684c4;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding-bottom: 10px;
 }
 
 .content form .sub {
-    font-size: .9rem;
-    font-weight: 500;
-    margin: 20px 0 10px 0;
+  margin: 20px 0;
+  font-size: .9rem;
+  font-weight: 500;
 }
 
 .content form .sub span {
-    color: red;
+  color: red;
 }
 
 .field-box {
-    display: flex;
-    width: 100%;
-    margin-bottom: 10px;
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
-.field {
-    flex: 1;
+.content .field {
+  flex: 1;
 }
 
-.field .txt {
-    font-size: .875rem;
-    width: 100%;
-    height: 25px;
-    margin-bottom: 5px;
+.content .field .txt {
+  font-size: .875rem;
+  width: 100%;
+  height: 25px;
+  margin-bottom: 5px;
 }
 
-.box {
-    margin-bottom: 20px;
+.content .box .field:nth-child(2) {
+  margin: 0 10px;
 }
-
-.box .field:nth-child(2) {
-    margin: 0 10px;
-}
-
 
 .input-area {
-    padding: 0 10px;
-    font-size: .85rem;
-    height: 40px;
-    display: flex;
-    align-items: center;
+  padding: 0 10px;
+  height: 30px;
+  font-size: .85rem;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+
+}
+
+.box .field .input-area {
+  height: 40px;
+  margin-bottom: 20px;
 }
 
 .input-area input[type="radio"] {
-    margin: 2px 3px 0 5px;
+  margin-right: 5px;
+  margin: 2px 3px 0px 5px;
 }
 
-.select {
-    height: 40px;
-    margin: 0 10px;
-    background: #f1f1f1;
-    border-radius: 5px;
+.box .select {
+  height: 40px;
+  margin: 0 10px;
+  background: #f1f1f1;
+  border-radius: 5px;
 }
 
 .input-area input[type="text"],
 .input-area select {
-    color: #505050;
-    width: 100%;
-    height: 100%;
-    border: none;
-    outline: none;
-    background: #f1f1f1;
-    border-radius: 5px;
-    padding-left: 14px;
+  color: #505050;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: #f1f1f1;
+  padding-left: 14px;
+  border-radius: 5px;
 }
 
 .input-area select {
-    padding-left: 0;
+  padding-left: 0;
+}
+
+.input-area label {
+  line-height: 0px;
 }
 
 .text-area {
-    color: #505050;
-    padding: 0 10px;
-    margin-bottom: 5px;
-    font-size: .875rem;
+  color: #505050;
+  padding: 0 10px;
+  margin-bottom: 5px;
+  font-size: .875rem;
 }
 
 .text-area .text {
-    border-radius: 5px;
-    background: #f1f1f1;
-    padding: 10px;
+  border-radius: 5px;
+  background: #f1f1f1;
+  padding: 10px;
 }
 
 .btn {
-    text-align: center;
-    margin-top: 20px;
+  text-align: center;
 }
 
-.btn input {
-    border: none;
-    outline: none;
-    padding: 10px 20px;
-    background: none;
-    border: 1px solid #000;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: .875rem;
-    transition: all .35s;
+
+.btn input,
+.btn a {
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  background: none;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: .875rem;
+  transition: all .35s;
+}
+
+.btn a {
+  background: #000;
+  color: #fff;
+  margin-left: 10px;
+}
+
+
+
+@media screen and (max-width: 700px) {
+  .container {
+    padding: 30px 10px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    border-radius: 0;
+  }
+
+  .content .field-box {
+    display: block;
+  }
+
+  .no {
+    display: none;
+  }
+
+  .content .box .field:nth-child(2) {
+    margin: 0;
+  }
+  
+  .input-area {
+    height: 50px;
+  }
+
+  .box .input-area {
+    margin-bottom: 10px;
+  }
+
+ .box .field .input-area {
+    height: 40px;
+    margin-bottom: 20px;
+  }
 }
