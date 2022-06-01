@@ -23,29 +23,5 @@
     font-size: 1rem;
     margin-top: 10px;
 }
-=======
-@import './reset.css';
 
-#hidden {
-    display: none;
-}
-
-.container {
-    color: #fff;
-    text-align: center;
-}
-
-.container img {
-    width: 100px;
-    height: 100px;
-}
-
-.container h1 {
-    font-size: 1.55rem;
-}
-
-.container p {
-    font-size: 1rem;
-    margin-top: 10px;
-}
 >>>>>>> 44ada91fbfc77476c905046653f5457bd75103b3
