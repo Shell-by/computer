@@ -231,11 +231,11 @@
             alert("지역을 선택해주세요.");
             return false;
         }
-        if(country.value.trim() == ""){
+        if(country.value.length == 0){
             alert("시/군/구를 입력해주세요.");
             return false;
         }
-        if(school_name.value.trim() == ""){
+        if(school_name.value.length == 0){
             alert("학교 이름을 입력해주세요.");
             return false;
         }
@@ -251,11 +251,11 @@
             alert("희망 학과를 선택해주세요.");
             return false;
         }
-        if(name.value.trim() == ""){
+        if(name.value.length == 0){
             alert("성명을 입력해주세요.");
             return false;
         }
-        if(phone_num.value == ""){
+        if(phone_num.value.length == 0){
             alert("전화번호를 입력해주세요.");
             return false;
         }
