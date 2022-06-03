@@ -263,6 +263,8 @@
             alert("연락처 주인을 선택해주세요.");
             return false;
         }
+        
+        return true;
     }
 
 
