@@ -181,6 +181,7 @@
             </div>
         </div>
         <div class="input-area">
+        <input type="radio" name="accept" id="hidden" value="아님" checked>
             <input type="radio" name="accept" id="accept1" value="0" class="accept"><label style="margin-right: 5px;" for="accept1">동의</label>
             <input type="radio" name="accept" id="accept2" value="1" class="accept"><label for="accept2">동의하지않음</label>
         </div>
