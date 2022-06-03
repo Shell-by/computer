@@ -11,7 +11,7 @@
 <div class="container">
     <div class="content">
         <div class="title">입시용 교과성적 산출</div>
-        <form onsubmit="return checkForm();" action="{{url('/')}}/record" method="post">
+        <form onsubmit="return checkForm()" action="{{url('/')}}/record" method="post">
         @csrf
         <div class="sub"><span>▪</span>지원자 정보</div>
         <div class="form-box">
@@ -194,76 +194,7 @@
 
 <script language='javascript'>
     function checkForm(){
-        var session = document.querySelector("input[name = 'user_session']:checked");
-        var city = document.querySelector("select[name = 'city']");
-        var country = document.querySelector("[name = 'country']");
-        var school_name = document.querySelector("input[name='sch_name']");
-        var gender_radio = document.querySelector("input[name = 'gender']:checked");
-        var way = document.querySelector("input[name = 'way']:checked");
-        var cls = document.querySelector("input[name = 'class']:checked");
-        var name = document.querySelector("input[name = 'stu_name']");
-        var phone_num = document.querySelector("input[name = 'ph_num']");
-        var onner = document.querySelector("input[name='onner']:checked");
-        var accept = document.querySelector("input[name = 'accept']:checked");
-
-        if(accept.value == "아님") {
-            alert("개인정보 수집·이용 동의서를 선택해주세요.");
-            return false;
-        }
-
-        if(accept.value == 1) {
-            if(session.value == "0"){
-                alert("졸업여부를 선택해주세요.");
-                return false;
-            }
-            if(way.value == "0"){
-                alert("관심 전형을 선택해주세요.");
-                return false;
-            }
-            return true;
-        }
-
-        if(session.value == "0"){
-            alert("졸업여부를 선택해주세요.");
-            return false;
-        }
-        if(city.value == "전체"){
-            alert("지역을 선택해주세요.");
-            return false;
-        }
-        if(country.value.length == 0){
-            alert("시/군/구를 입력해주세요.");
-            return false;
-        }
-        if(school_name.value.length == 0){
-            alert("학교 이름을 입력해주세요.");
-            return false;
-        }
-        if(gender_radio.value == "0"){
-            alert("성별을 선택해주세요.");
-            return false;
-        }
-        if(way.value == "0"){
-            alert("관심 전형을 선택해주세요.");
-            return false;
-        }
-        if(cls.value == "0"){
-            alert("희망 학과를 선택해주세요.");
-            return false;
-        }
-        if(name.value.length == 0){
-            alert("성명을 입력해주세요.");
-            return false;
-        }
-        if(phone_num.value.length == 0){
-            alert("전화번호를 입력해주세요.");
-            return false;
-        }
-        if(onner.value == "0"){
-            alert("연락처 주인을 선택해주세요.");
-            return false;
-        }
-        
+        alert("넌 못지나간다");
         return false;
     }
 
