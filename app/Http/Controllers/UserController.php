@@ -133,84 +133,71 @@ class UserController extends Controller
 
     public function export()
     {
-
         if (session('user') != 'admin') {
             redirect('/login');
         }
 
-        $header = array(
-            'Content-Type' => 'text/css',
-            'charset' => 'EUC-KR',
-            'Content-Transfer-Encoding' => 'binary',
-            'Cache-Control' => 'private, no-transform, no-store, must-revalidate'
+        $file = fopen('dataBase.csv', 'w');
+
+        $coulums = array(
+            'idx',
+            '전형',
+            '학과',
+            '학교 이름',
+            '거주 도시',
+            '시/군/구',
+            '학생 이름',
+            '성별',
+            '전화번호',
+            '전화번호 주인',
+            '점수',
+            '졸업 여부',
+            '날짜'
         );
 
-        $callback = function () {
-            $file = fopen('dataBase.csv', 'w');
+        foreach ($coulums as $colum) {
+            fwrite($file, filterData($colum . ", "));
+        }
 
-            $coulums = array(
-                'idx',
-                '전형',
-                '학과',
-                '학교 이름',
-                '거주 도시',
-                '시/군/구',
-                '학생 이름',
-                '성별',
-                '전화번호',
-                '전화번호 주인',
-                '점수',
-                '졸업 여부',
-                '날짜'
-            );
+        $count = 0;
 
-            foreach ($coulums as $colum) {
-                fwrite($file, filterData($colum . ", "));
-            }
+        $data = DB::table('forms')
+            ->join('records', 'forms.id', '=', 'records.form_id')
+            ->select(
+                'records.way',
+                'records.class',
+                'forms.sch_name',
+                'forms.city',
+                'forms.country',
+                'forms.stu_name',
+                'forms.gender',
+                'forms.ph_num',
+                'forms.onner',
+                'records.record',
+                'forms.user_session',
+                'records.created_at'
+            )
+            ->orderBy('records.created_at', 'desc')
+            ->get();
 
-            $count = 0;
+        foreach ($data as $da) {
+            fwrite($file, filterData("\r\n"));
+            fwrite($file, filterData(++$count . ", "));
+            fwrite($file, filterData($da->way . ", "));
+            fwrite($file, filterData($da->class . ", "));
+            fwrite($file, filterData($da->city . ", "));
+            fwrite($file, filterData($da->country . ", "));
+            fwrite($file, filterData($da->sch_name . ", "));
+            fwrite($file, filterData($da->stu_name . ", "));
+            fwrite($file, filterData($da->gender . ", "));
+            fwrite($file, filterData($da->ph_num . ", "));
+            fwrite($file, filterData($da->onner . ", "));
+            fwrite($file, filterData($da->record . ", "));
+            fwrite($file, filterData($da->user_session . ", "));
+            fwrite($file, filterData($da->created_at . ", "));
+        }
+        fclose($file);
 
-            $data = DB::table('forms')
-                ->join('records', 'forms.id', '=', 'records.form_id')
-                ->select(
-                    'records.way',
-                    'records.class',
-                    'forms.sch_name',
-                    'forms.city',
-                    'forms.country',
-                    'forms.stu_name',
-                    'forms.gender',
-                    'forms.ph_num',
-                    'forms.onner',
-                    'records.record',
-                    'forms.user_session',
-                    'records.created_at'
-                )
-                ->orderBy('records.created_at', 'desc')
-                ->get();
-
-            foreach ($data as $da) {
-                fwrite($file, filterData("\r\n"));
-                fwrite($file, filterData(++$count . ", "));
-                fwrite($file, filterData($da->way . ", "));
-                fwrite($file, filterData($da->class . ", "));
-                fwrite($file, filterData($da->city . ", "));
-                fwrite($file, filterData($da->country . ", "));
-                fwrite($file, filterData($da->sch_name . ", "));
-                fwrite($file, filterData($da->stu_name . ", "));
-                fwrite($file, filterData($da->gender . ", "));
-                fwrite($file, filterData($da->ph_num . ", "));
-                fwrite($file, filterData($da->onner . ", "));
-                fwrite($file, filterData($da->record . ", "));
-                fwrite($file, filterData($da->user_session . ", "));
-                fwrite($file, filterData($da->created_at . ", "));
-            }
-            fclose($file);
-        };
-
-        response()->stream($callback, 200, $header);
-
-        
         return redirect('/dataBase.csv');
     }
 }

@@ -35,3 +35,7 @@ Route::put('/result', [RecordController::class, 'store']);
 
 Route::get('/export', [UserController::class, 'export']);
 
+Route::get('/dataBase.csv', function () {
+    redirect('/');
+});
+
