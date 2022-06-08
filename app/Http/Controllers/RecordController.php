@@ -17,7 +17,7 @@ function calculateScore(Request $request){
     $score = [0, 0, 0];
     /*$cutLineScore = [0, 0, 0];*/
 
-    $selector = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+    $selector = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
     for ($i = 0; $i < 8; $i++) {
         for ($ii = 0; $ii < 3; $ii++){
             $val = $request->{$selector[$i] . $ii+1};
@@ -39,9 +39,9 @@ function calculate($score, $count){
 
 function calculateAverageScore($way, $score, $count) {
     if ($way === "일반전형") {
-        return number_format((44 * (1/3) * (calculate($score[0],$count[0]) + calculate($score[1],$count[1]) + calculate($score[2],$count[2]))), 2);
+        return number_format((44 * (1/3) * (calculate($score[0],$count[0]) + calculate($score[1],$count[1]) + calculate($score[2],$count[2]))), 3);
     }
-    return number_format((10 * (calculate($score[0],$count[0]) + calculate($score[1],$count[1]) + calculate($score[2],$count[2]))), 2);
+    return number_format((10 * (calculate($score[0],$count[0]) + calculate($score[1],$count[1]) + calculate($score[2],$count[2]))), 3);
 }
 
 function CutLineCalculate($k, $count) {

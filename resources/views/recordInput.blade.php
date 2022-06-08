@@ -385,9 +385,52 @@
           </select>
         </div>
       </div>
+          <div class="field-box">
+              <div class="field list">기술가정</div>
+              <div class="field">
+                  <select name="h1" id="i1">
+                      <option value="0" selected>-</option>
+                      <option value="5">A</option>
+                      <option value="4">B</option>
+                      <option value="3">C</option>
+                      <option value="2">D</option>
+                      <option value="1">E</option>
+                  </select>
+              </div>
+              <div class="field">
+                  <select name="h2" id="i2">
+                      <option value="0" selected>-</option>
+                      <option value="5">A</option>
+                      <option value="4">B</option>
+                      <option value="3">C</option>
+                      <option value="2">D</option>
+                      <option value="1">E</option>
+                  </select>
+              </div>
+              <div class="field">
+                  <select name="h3" id="i3">
+                      <option value="0" selected>-</option>
+                      <option value="5">A</option>
+                      <option value="4">B</option>
+                      <option value="3">C</option>
+                      <option value="2">D</option>
+                      <option value="1">E</option>
+                  </select>
+              </div>
+              <div class="field">
+                  <select name="h4" id="i4" disabled>
+                      <option value="check" selected>-</option>
+                      <option value="5">A</option>
+                      <option value="4">B</option>
+                      <option value="3">C</option>
+                      <option value="2">D</option>
+                      <option value="1">E</option>
+                  </select>
+              </div>
+          </div>
       <div class="btn"><input type="submit" value="계산하기"></div>
       </table>
-      @else 
+      @else
       <table>
         <div class="sub"><span>▪</span>교과성적 입력</div>
         <div class="field-box top">
@@ -750,6 +793,49 @@
               <option value="2">D</option>
               <option value="1">E</option>
             </select>
+          </div>
+        </div>
+        <div class="field-box">
+          <div class="field list">기술가정</div>
+          <div class="field">
+              <select name="h1" id="i1">
+                  <option value="0" selected>-</option>
+                  <option value="5">A</option>
+                  <option value="4">B</option>
+                  <option value="3">C</option>
+                  <option value="2">D</option>
+                  <option value="1">E</option>
+              </select>
+          </div>
+          <div class="field">
+              <select name="h2" id="i2">
+                  <option value="0" selected>-</option>
+                  <option value="5">A</option>
+                  <option value="4">B</option>
+                  <option value="3">C</option>
+                  <option value="2">D</option>
+                  <option value="1">E</option>
+              </select>
+          </div>
+          <div class="field">
+              <select name="h3" id="i3">
+                  <option value="0" selected>-</option>
+                  <option value="5">A</option>
+                  <option value="4">B</option>
+                  <option value="3">C</option>
+                  <option value="2">D</option>
+                  <option value="1">E</option>
+              </select>
+          </div>
+          <div class="field">
+              <select name="h4" id="i4">
+                  <option value="check" selected>-</option>
+                  <option value="5">A</option>
+                  <option value="4">B</option>
+                  <option value="3">C</option>
+                  <option value="2">D</option>
+                  <option value="1">E</option>
+              </select>
           </div>
         </div>
         <div class="btn"><input type="submit" value="계산하기"></div>
