@@ -18,7 +18,7 @@ function calculateScore(Request $request){
     /*$cutLineScore = [0, 0, 0];*/
 
     $selector = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
-    for ($i = 0; $i < 8; $i++) {
+    for ($i = 0; $i < 9; $i++) {
         for ($ii = 0; $ii < 3; $ii++){
             $val = $request->{$selector[$i] . $ii+1};
             if ($val != 0) {
