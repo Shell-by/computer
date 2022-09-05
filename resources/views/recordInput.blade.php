@@ -75,7 +75,7 @@
         </div>
         <div class="field">
           <select name="a4" id="a4" disabled>
-            <option value="check" selected>-</option>
+            <option value="0" selected>-</option>
             <option value="5">A</option>
             <option value="4">B</option>
             <option value="3">C</option>
@@ -118,7 +118,7 @@
         </div>
         <div class="field">
           <select name="b4" id="b4" disabled>
-            <option value="check" selected>-</option>
+            <option value="0" selected>-</option>
             <option value="5">A</option>
             <option value="4">B</option>
             <option value="3">C</option>
@@ -161,7 +161,7 @@
         </div>
         <div class="field">
           <select name="c4" id="c4" disabled>
-            <option value="check" selected>-</option>
+            <option value="0" selected>-</option>
             <option value="5">A</option>
             <option value="4">B</option>
             <option value="3">C</option>
@@ -204,7 +204,7 @@
         </div>
         <div class="field">
           <select name="d4" id="d4" disabled>
-            <option value="check" selected>-</option>
+            <option value="0" selected>-</option>
             <option value="5">A</option>
             <option value="4">B</option>
             <option value="3">C</option>
@@ -247,7 +247,7 @@
         </div>
         <div class="field">
           <select name="e4" id="e4" disabled>
-            <option value="check" selected>-</option>
+            <option value="0" selected>-</option>
             <option value="5">A</option>
             <option value="4">B</option>
             <option value="3">C</option>
@@ -290,7 +290,7 @@
         </div>
         <div class="field">
           <select name="f4" id="f4" disabled>
-            <option value="check" selected>-</option>
+            <option value="0" selected>-</option>
             <option value="5">A</option>
             <option value="4">B</option>
             <option value="3">C</option>
@@ -333,7 +333,7 @@
         </div>
         <div class="field">
           <select name="g4" id="g4" disabled>
-            <option value="check" selected>-</option>
+            <option value="0" selected>-</option>
             <option value="5">A</option>
             <option value="4">B</option>
             <option value="3">C</option>
@@ -376,7 +376,7 @@
         </div>
         <div class="field">
           <select name="h4" id="h4" disabled>
-            <option value="check" selected>-</option>
+            <option value="0" selected>-</option>
             <option value="5">A</option>
             <option value="4">B</option>
             <option value="3">C</option>
@@ -419,7 +419,7 @@
               </div>
               <div class="field">
                   <select name="h4" id="i4" disabled>
-                      <option value="check" selected>-</option>
+                      <option value="0" selected>-</option>
                       <option value="5">A</option>
                       <option value="4">B</option>
                       <option value="3">C</option>
@@ -485,7 +485,7 @@
           </div>
           <div class="field">
             <select name="a4" id="a4">
-              <option value="check" selected>-</option>
+              <option value="0" selected>-</option>
               <option value="5">A</option>
               <option value="4">B</option>
               <option value="3">C</option>
@@ -528,7 +528,7 @@
           </div>
           <div class="field">
             <select name="b4" id="b4">
-              <option value="check" selected>-</option>
+              <option value="0" selected>-</option>
               <option value="5">A</option>
               <option value="4">B</option>
               <option value="3">C</option>
@@ -571,7 +571,7 @@
           </div>
           <div class="field">
             <select name="c4" id="c4">
-              <option value="check" selected>-</option>
+              <option value="0" selected>-</option>
               <option value="5">A</option>
               <option value="4">B</option>
               <option value="3">C</option>
@@ -614,7 +614,7 @@
           </div>
           <div class="field">
             <select name="d4" id="d4">
-              <option value="check" selected>-</option>
+              <option value="0" selected>-</option>
               <option value="5">A</option>
               <option value="4">B</option>
               <option value="3">C</option>
@@ -657,7 +657,7 @@
           </div>
           <div class="field">
             <select name="e4" id="e4">
-              <option value="check" selected>-</option>
+              <option value="0" selected>-</option>
               <option value="5">A</option>
               <option value="4">B</option>
               <option value="3">C</option>
@@ -700,7 +700,7 @@
           </div>
           <div class="field">
             <select name="f4" id="f4">
-              <option value="check" selected>-</option>
+              <option value="0" selected>-</option>
               <option value="5">A</option>
               <option value="4">B</option>
               <option value="3">C</option>
@@ -743,7 +743,7 @@
           </div>
           <div class="field">
             <select name="g4" id="g4">
-              <option value="check" selected>-</option>
+              <option value="0" selected>-</option>
               <option value="5">A</option>
               <option value="4">B</option>
               <option value="3">C</option>
@@ -786,7 +786,7 @@
           </div>
           <div class="field">
             <select name="h4" id="h4">
-              <option value="check" selected>-</option>
+              <option value="0" selected>-</option>
               <option value="5">A</option>
               <option value="4">B</option>
               <option value="3">C</option>
@@ -829,7 +829,7 @@
           </div>
           <div class="field">
               <select name="h4" id="i4">
-                  <option value="check" selected>-</option>
+                  <option value="0" selected>-</option>
                   <option value="5">A</option>
                   <option value="4">B</option>
                   <option value="3">C</option>
