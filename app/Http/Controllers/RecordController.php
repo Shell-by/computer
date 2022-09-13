@@ -47,7 +47,7 @@ function calculateAverageScore($way, $score, $count, $number) {
     if ($way === "일반전형") {
         return number_format((44 * $number * (totalScore($score, $count, $number))), 3);
     }
-    return number_format((10 * $number * ((totalScore($score, $count, $number)))), 3);
+    return number_format((30 * $number * ((totalScore($score, $count, $number)))), 3);
 }
 
 class RecordController extends Controller
