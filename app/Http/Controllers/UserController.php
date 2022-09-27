@@ -133,7 +133,7 @@ class UserController extends Controller
     public function export()
     {
         if (session('user') != 'admin') {
-            // return redirect('login');
+            return redirect('login');
         }
 
         $file = fopen('download/csv/admin/database/dataBase.csv', 'w');
