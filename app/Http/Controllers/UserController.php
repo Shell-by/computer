@@ -132,7 +132,7 @@ class UserController extends Controller
 
     public function export()
     {
-        if (session('user') != 'admin') {
+        if (session('user') == null || session('user') != 'admin') {
             return redirect('login');
         }
 
