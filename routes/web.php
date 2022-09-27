@@ -25,13 +25,25 @@ Route::get('/login', function () {
 });
 Route::post('/loginController', [UserController::class, 'store']);
 
+Route::get('/loginController', function () {
+    echo "<script>location.href='/'</script>";
+});
+
 Route::get('/output/{id}', [UserController::class, 'show']);
 
 Route::get('/form', [FormController::class, 'index']);
 
 Route::post('/record', [FormController::class, 'store']);
 
+Route::get('/record', function () {
+    echo "<script>location.href='/'</script>";
+});
+
 Route::put('/result', [RecordController::class, 'store']);
+
+Route::get('/result', function () {
+    echo "<script>location.href='/'</script>";
+});
 
 Route::get('/export', [UserController::class, 'export']);
 
