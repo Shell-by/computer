@@ -6,8 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-function filterData($string) {
-    $string=iconv("UTF-8","EUC-KR",($string));
+function filterData($string)
+{
+    $string = iconv("UTF-8", "EUC-KR", ($string));
     return $string;
 }
 
@@ -47,12 +48,11 @@ class UserController extends Controller
             ->count();
 
         if ($count != 0) {
-            session()->put('user','admin');
+            session()->put('user', 'admin');
             return redirect('output/0');
         }
 
         return redirect('login');
-
     }
 
     /**
@@ -70,27 +70,26 @@ class UserController extends Controller
 
         $data = DB::table('forms')
             ->join('records', 'forms.id', '=', 'records.form_id')
-            ->select('forms.stu_name',
-                             'records.way',
-                             'records.class',
-                             'records.record',
-                             'forms.sch_name',
-                             'records.created_at',
-                             'forms.ph_num',
-                             'forms.onner',
-                             'forms.city',
-                             'forms.country',
-                             'forms.gender',
-                             'forms.user_session')
+            ->select(
+                'forms.stu_name',
+                'records.way',
+                'records.class',
+                'records.record',
+                'forms.sch_name',
+                'records.created_at',
+                'forms.ph_num',
+                'forms.onner',
+                'forms.city',
+                'forms.country',
+                'forms.gender',
+                'forms.user_session'
+            )
             ->orderBy('records.created_at', 'desc')
-//            ->offset($id * 15)
-//            ->limit(15)
+            //            ->offset($id * 15)
+            //            ->limit(15)
             ->get();
 
         return view('output')->with('data', $data);
-
-        echo $count;
-
     }
 
     /**
@@ -134,10 +133,10 @@ class UserController extends Controller
     public function export()
     {
         if (session('user') != 'admin') {
-            redirect('/login');
+            // return redirect('login');
         }
 
-        $file = fopen('dataBase.csv', 'w');
+        $file = fopen('download/csv/admin/database/dataBase.csv', 'w');
 
         $coulums = array(
             'idx',
@@ -198,6 +197,6 @@ class UserController extends Controller
         }
         fclose($file);
 
-        return redirect('/dataBase.csv');
+        return redirect('/download/csv/admin/database/dataBase.csv');
     }
 }
