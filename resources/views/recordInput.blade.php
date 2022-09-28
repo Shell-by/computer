@@ -51,7 +51,7 @@
                         <div class="field list">{{ $subject[$i] }}</div>
                         @for ($j = 1; $j <= 4; $j++)
                             <div class="field">
-                                <select name="{{ $selector[$i] . $j }}" id="{{ $selector[$i] . $j }}" @if($request->user_session != "졸업") disabled @endif>
+                                <select name="{{ $selector[$i] . $j }}" id="{{ $selector[$i] . $j }}" @if($request->user_session != "졸업" && $j == 4) disabled @endif>
                                     <option value="0" selected>-</option>
                                     <option value="5">A</option>
                                     <option value="4">B</option>
