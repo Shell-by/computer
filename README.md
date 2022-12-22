@@ -12,6 +12,6 @@ php artisan serve
 ``php artisan migrate``는 데이터베이스의 테이블을 생성합니다<br>
 ``php artisan serve``는 라라벨을 실행시킵니다.
 # 개발
-이준환 : 백엔드<br>
-임재현 : 프론트<br>
-김무일 : 디자인
+<a href="https://github.com/Shell-by">이준환</a> : 백엔드<br>
+<a href="https://github.com/reproduce0529">임재현</a> : 프론트<br>
+<a href="https://github.com/gimmuil">김무일</a> : 디자인
