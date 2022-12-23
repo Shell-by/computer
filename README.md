@@ -14,4 +14,4 @@ php artisan serve
 # 개발
 <a href="https://github.com/Shell-by">이준환</a> : 백엔드<br>
 <a href="https://github.com/reproduce0529">임재현</a> : 프론트<br>
-<a href="https://github.com/gimmuil">김무일</a> : 디자인
+<a href="https://github.com/gimmuil">김무일</a> : 디자인, 프론트
