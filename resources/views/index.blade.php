@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; ">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; ">
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <script src="https://kit.fontawesome.com/b72e2023d3.js" crossorigin="anonymous"></script>
   <title>GBSW - 성적산출 프로그램</title>
