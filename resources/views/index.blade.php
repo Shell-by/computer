@@ -628,6 +628,7 @@
         });
 
         let data = { 
+            "_token": document.querySelector('input[name="_token"]').value,
             count: count, 
             score: score, 
             user_session: document.querySelector('[name="user_session"]:checked').value, 
