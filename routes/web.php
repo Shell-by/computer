@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FormController;
 use App\Http\Controllers\RecordController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
 /*
@@ -17,7 +16,10 @@ use App\Http\Controllers\UserController;
 */
 
 // 인덱스 페이지, 처음 접속 후 보여지는 페이지
-Route::view('/', 'index');
+Route::get('/', function() {
+    return view('index');
+});
+Route::post('/', [RecordController::class, 'store']);
 
 // 관리자 로그인 페이지, 들어가는 방법은 링크를 직접 쳐야한다..
 Route::view('/login', 'login');
@@ -32,32 +34,6 @@ Route::get('/loginController', function () {
 
 // 관리자가 로그인시 접속할 수 있는 페이지, 페이징 기능 미구현,
 Route::get('/output/{id}', [UserController::class, 'show']);
-
-// 사용자의 기본 정보를 입력받는 폼
-Route::get('/form', [FormController::class, 'index']);
-
-/*
-    사용자의 기본 정보를 받은 폼에서 값을 넘겨주는 곳,
-    값을 받아 데이터를 저장하고 필요한 값을 성적을 입력하는곳으로 넘김
- */
-Route::post('/record', [FormController::class, 'store']);
-
-// 정보를 입력받지 않고 링크로만 접속할시 메인페이지로 이동
-Route::get('/record', function () {
-    echo "<script>location.href='/'</script>";
-});
-
-/*
-    성적을 입력받고 계산하여 사용자에게 보여주는곳,
-    사용자 정보 저장 동의를 했을 경우 저장
-*/
-Route::put('/result', [RecordController::class, 'store']);
-
-
-// 정보를 입력받지 않고 링크로만 접속할시 메인페이지로 이동
-Route::get('/result', function () {
-    echo "<script>location.href='/'</script>";
-});
 
 // 관리자가 export로 왔을시 데이터베이스에 있는 데이터를 csv로 변환하여 다운받을 수 있음
 Route::get('/export', [UserController::class, 'export']);

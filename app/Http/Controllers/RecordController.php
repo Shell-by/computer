@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Form;
 use Illuminate\Http\Request;
 use App\Models\Record;
 use Illuminate\Support\Facades\DB;
-use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 
 /**
  * Calculates score and count
@@ -70,9 +70,11 @@ class RecordController extends Controller
      */
     public function store(Request $request)
     {
-        $record = new Record();
-
-        list($score, $count) = calculateScore($request);
+        // return response()->json(["data" => $request->score], 200, ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']);
+        
+        $score = $request->score;
+        $count = $request->count;
+        // list($score, $count) = calculateScore($request);
 
         if ($request->way === "일반전형") {
             //check the $count[?] is 0 -> no calculation
@@ -87,17 +89,37 @@ class RecordController extends Controller
                 $result = calculateAverageScore("특별전형", $score, $count, 1/4);
         }
 
-        if ($request->accept == 0 ) {
-            $record->form_id = $request->form_id;
+        if ($request->ckbox) {
+            $form = new Form();
+            $form->user_session = $request->user_session;
+            $form->city = $request->city;
+            $form->country = $request->country;
+            $form->sch_name = $request->sch_name;
+            $form->gender = $request->gender;
+            $form->way = $request->way;
+            $form->class = $request->class;
+            $form->stu_name = $request->stu_name;
+            $form->ph_num = $request->ph_num;
+            $form->onner = $request->onner;
+            $form->accept = true;
+
+            $form->save();
+
+            $form_id = DB::table('forms')->orderByDesc('created_at')->value('id');
+
+            $record = new Record();
+            $record->form_id = $form_id;
             $record->user_session = $request->user_session;
             $record->way = $request->way;
             $record->class = $request->class;
             $record->record = $result;
-
+            
             $record->save();
         }
-
-        return view('result')->with('result', $result)->with('way', $request->way);
+        
+        return response()->json(["data" => $result], 200, ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8']);
+        
+        // return view('result')->with('result', $result)->with('way', $request->way);
 
     }
 }
