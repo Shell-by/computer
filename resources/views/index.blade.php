@@ -655,7 +655,7 @@
                   "Accept": "application/json, text-plain, */*",
                   "X-Requested-With": "XMLHttpRequest",
                 // 'Content-Type': 'application/x-www-form-urlencoded',
-                'X-CSRF-TOKEN': document.head.querySelector('input[name="_token"]').value,
+                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
             },
             body: JSON.stringify(data),
         }).then((response) => response.json()).then((e) => {
