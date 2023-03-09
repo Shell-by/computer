@@ -628,7 +628,7 @@
         });
 
         let data = { 
-            "_token": document.querySelector('input[name="_token"]').value,
+            "_token": "{{ csrf_token() }}",
             count: count, 
             score: score, 
             user_session: document.querySelector('[name="user_session"]:checked').value, 
@@ -653,10 +653,9 @@
             cache: 'no-cache',
             headers: {
                 "Content-Type": "application/json",
-                  "Accept": "application/json, text-plain, */*",
-                  "X-Requested-With": "XMLHttpRequest",
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-                'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+                "Accept": "application/json, text-plain, */*",
+                "X-Requested-With": "XMLHttpRequest",
+                'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
             },
             body: JSON.stringify(data),
         }).then((response) => response.json()).then((e) => {
