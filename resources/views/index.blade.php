@@ -648,7 +648,7 @@
 
         // document.querySelector('#form_data').submit();
         
-        fetch('{{url('/')}}', {
+        fetch('https://calc.gbsw.hs.kr/', {
             method: 'post',
             cache: 'no-cache',
             headers: {
