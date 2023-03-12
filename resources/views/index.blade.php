@@ -656,7 +656,8 @@
                 "Accept": "application/json, text-plain, */*",
                 "X-Requested-With": "XMLHttpRequest",
                 'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
-                "Upgrade-Insecure-Requests": 1,
+                'Upgrade-Insecure-Requests': '1',
+                credentials: 'include',
             },
             body: JSON.stringify(data),
         }).then((response) => response.json()).then((e) => {
