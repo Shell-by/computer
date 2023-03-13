@@ -123,7 +123,7 @@
       </div>
       <div class="ckbox">
         <input type="radio" name="accept" id="accept1" value="0" class="accept"><label for="accept1">동의</label>
-        <input type="radio" name="accept" id="accept2" value="1" class="accept"><label for="accept2">동의하지 않음</label>
+        <input type="radio" name="accept" id="accept2" value="1" class="accept" checked><label for="accept2">동의하지 않음</label>
       </div>
     </div>
     <div class="inp">
