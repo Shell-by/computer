@@ -31,9 +31,9 @@
               <td colspan="3">
                 <input type="radio" name="user_session" value="0" class="radio1" id="hidden" onchange="changeSession()" checked>
                 <input type="radio" name="user_session" value="졸업예정" class="radio1" id="session1" onchange="changeSession()">
-                <label for="session1">졸업예정(3학년)</label>
+                <label for="session1">졸업예정자(중학교 3학년)</label>
                 <input type="radio" name="user_session" value="졸업" class="radio1" id="session2" onchange="changeSession()">
-                <label for="session2">졸업</label>
+                <label for="session2">졸업자</label>
               </td>
             </tr>
             <tr class="native">
@@ -41,6 +41,7 @@
               <td colspan="3">
                 <select name='city' class="input">
                   <option selected disabled value='전체'>전체</option>
+                  <option value='경북'>경상북도</option>
                   <option value='서울'>서울특별시</option>
                   <option value='부산'>부산광역시</option>
                   <option value='대구'>대구광역시</option>
@@ -54,7 +55,6 @@
                   <option value='충남'>충청남도</option>
                   <option value='전북'>전라북도</option>
                   <option value='전남'>전라남도</option>
-                  <option value='경북'>경상북도</option>
                   <option value='경남'>경상남도</option>
                   <option value='제주'>제주도</option>
                 </select>
@@ -91,7 +91,7 @@
                   <option value="미정">미정</option>
                 </select>
               </td>
-              <th>검증인</th>
+              <th>입력자</th>
               <td>
                 <input type="radio" name="onner" value="보호자" class="onner" id="b">
                 <label for="b">보호자</label>
@@ -648,6 +648,7 @@
 
         // document.querySelector('#form_data').submit();
         
+        // fetch('{{url('/')}}', {
         fetch('https://calc.gbsw.hs.kr/', {
             method: 'post',
             cache: 'no-cache',

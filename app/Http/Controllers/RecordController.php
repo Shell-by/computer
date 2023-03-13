@@ -99,7 +99,7 @@ class RecordController extends Controller
             $form->way = $request->way;
             $form->class = $request->class;
             $form->stu_name = $request->stu_name;
-            $form->ph_num = $request->ph_num;
+            $form->ph_num = substr($request->ph_num, 0, 3) . "-" . substr($request->ph_num, 3, 4) . "-" . substr($request->ph_num, 7);
             $form->onner = $request->onner;
             $form->accept = true;
 
