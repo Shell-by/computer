@@ -89,7 +89,7 @@ class RecordController extends Controller
                 $result = calculateAverageScore("특별전형", $score, $count, 1/4);
         }
 
-        if ($request->ckbox) {
+        if ($request->ckbox == 0) {
             $form = new Form();
             $form->user_session = $request->user_session;
             $form->city = $request->city;

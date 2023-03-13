@@ -122,16 +122,17 @@
         </ul>
       </div>
       <div class="ckbox">
-        <label for="ckbox">본인은 위의 동의서 내용을 충분히 숙지하였으며, 개인정보 수집·이용·제공하는 것에 동의합니다.</label><input type="checkbox" id="ckbox" name="ckbox">
+        <input type="radio" name="accept" id="accept1" value="0" class="accept"><label for="accept1">동의</label>
+        <input type="radio" name="accept" id="accept2" value="1" class="accept"><label for="accept2">동의하지 않음</label>
       </div>
     </div>
     <div class="inp">
       <table>
         <tbody>
           <tr class="user">
-            <th>성명(지원자)</th>
+            <th>학생이름</th>
             <td><input type="text" name="stu_name" autocomplete="off" placeholder="이름을 입력하세요." class="name"></td>
-            <th>연락쳐</th>
+            <th>연락처</th>
             <td>
               <input type="text" maxlength="11" name = "ph_num" autocomplete="off" placeholder="숫자만 입력하세요." class="num" pattern="[0-9]+">
             </td>
@@ -580,7 +581,7 @@
             alert('전형을 입력해주세요');
             return 0;
         }
-        if (document.querySelector('[name="ckbox"]').checked) {
+        if (document.querySelector('[name="accept"]').checked) {
             if (document.querySelector('[name="city"] option:checked').value == "전체") {
                 alert('광역자치단체를 선택해주세요');
                 return 0;
@@ -639,7 +640,7 @@
             gender: document.querySelector('[name="gender"]:checked').value,
             class: document.querySelector('[name="class"] option:checked').value,
             onner: document.querySelector('[name="onner"]:checked').value,
-            ckbox: document.querySelector('[name="ckbox"]').checked,
+            ckbox: document.querySelector('[name="accept"]:checked').value,
             stu_name: document.querySelector('[name="stu_name"]').value,
             ph_num: document.querySelector('[name="ph_num"]').value,
         }
