@@ -570,7 +570,7 @@
     function btnClick() {
         let value = document.querySelector('[name="user_session"]:checked').value;
         let school = 0;
-        if (value == 4) {
+        if (value == 0) {
             alert('학력을 입력해주세요');
             return 0;
         } else if (value == "졸업예정") {
@@ -610,7 +610,7 @@
                 alert('성명을 입력해주세요');
                 return 0;
             }
-            if (document.querySelector('[name="ph_num"]').value.length == 0) {
+            if (document.querySelector('[name="ph_num"]').value.length !== 11) {
                 alert('연락처를 입력해주세요');
                 return 0;
             }
@@ -649,8 +649,8 @@
 
         // document.querySelector('#form_data').submit();
         
-        // fetch('{{url('/')}}', {
-        fetch('https://calc.gbsw.hs.kr/', {
+        fetch('{{url('/')}}', {
+        // fetch('https://calc.gbsw.hs.kr/', {
             method: 'post',
             cache: 'no-cache',
             headers: {
