@@ -25,6 +25,7 @@
               <th>과</th>
               <th>점수</th>
               <th>출신 중학교</th>
+              <th>전화번호</th>
               <th>날짜</th>
             </tr>
 
@@ -41,6 +42,7 @@
                     <td class="even">{{$da->class}}</td>
                     <td class="even">{{$da->record}}</td>
                     <th scope="row" class="even">{{$da->sch_name}}</th>
+                    <th class="even">{{$da->ph_num}}</th>
                     <td class="even">{{$da->created_at}}</td>
                 </tr>
 
